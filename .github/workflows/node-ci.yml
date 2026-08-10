@@ -1,28 +1,74 @@
-name: Node.js CI
+# name: Node.js CI
 
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 24
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Run tests
+#         run: npm test
+
+
+name: Node.js CI
+ 
 on:
   push:
     branches:
       - main
+ 
   pull_request:
     branches:
       - main
-
+ 
 jobs:
   build:
+ 
     runs-on: ubuntu-latest
-
+ 
     steps:
-      - name: Checkout repository
+ 
+      - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
+ 
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
-
-      - name: Install dependencies
+          node-version: 20
+ 
+      - name: Install Dependencies
         run: npm install
-
-      - name: Run tests
+ 
+      - name: Run Tests
         run: npm test
+ 
+      - name: Build Docker Image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest .
+ 
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+ 
+      - name: Push Docker Image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest
+        
