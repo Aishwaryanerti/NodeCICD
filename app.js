@@ -1,6 +1,4 @@
 const express = require("express");
-<<<<<<< HEAD
- 
 const app = express();
  
 app.get("/hello", (req, res) => {
@@ -10,7 +8,6 @@ app.get("/hello", (req, res) => {
 });
  
 module.exports = app;
-=======
 const add = require("./sum");
 
 const app = express();
@@ -35,4 +32,3 @@ app.get("/sum", (req, res) => {
 app.listen(3000, () => {
     console.log(`Server running on port 3000`);
 });
->>>>>>> 4d87b3d10b031a9157e01dcfa0663c75b2dbd790
