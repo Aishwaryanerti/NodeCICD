@@ -1,33 +1,3 @@
-# name: Node.js CI
-
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
-
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v4
-
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: 24
-
-#       - name: Install dependencies
-#         run: npm install
-
-#       - name: Run tests
-#         run: npm test
-
-
 name: Node.js CI
 
 on:
@@ -58,15 +28,26 @@ jobs:
       - name: Run Tests
         run: npm test
 
+<<<<<<< HEAD
       - name: Build Docker Image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest .
 
+=======
+>>>>>>> 91dd539 (Add Node.js CI workflow)
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+<<<<<<< HEAD
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest
         
+=======
+      - name: Build Docker Image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest .
+
+      - name: Push Docker Image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest
+>>>>>>> 91dd539 (Add Node.js CI workflow)
