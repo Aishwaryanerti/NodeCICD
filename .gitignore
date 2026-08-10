@@ -1,7 +1,1 @@
-<<<<<<< HEAD
-node_modules/
-=======
-node_modules/
-.env
-coverage/
->>>>>>> 4d87b3d10b031a9157e01dcfa0663c75b2dbd790
+/node_modules
