@@ -39,4 +39,4 @@ jobs:
 
 
       - name: Push Docker Image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest:latest
