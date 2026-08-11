@@ -23,7 +23,7 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Tests
         run: npm test
@@ -36,11 +36,17 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+<<<<<<< HEAD
 
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest
         
 
+=======
+      - name: Push Docker Image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest
+        
+>>>>>>> b35cc23 (cicd flow)
       - name: Build Docker Image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/nodecicd:latest .
 
