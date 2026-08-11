@@ -1,3 +1,4 @@
+```yaml
 name: Node.js CI
 
 on:
@@ -37,7 +38,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/cicd:latest
-        
+```
